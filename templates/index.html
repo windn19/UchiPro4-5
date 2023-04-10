@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>My Form</title>
+    </head>
+    <body>
+        <form action="" method="post" novalidate>
+            {{ form.csrf_token }}
+            <div>
+                <h1>Форма обратной связи</h1>
+                <label>{{ form.name.label }}</label>
+                {{ form.name()}}
+            </div>
+            {{ form.submit() }}
+        </form>
+    </body>
+</html>
