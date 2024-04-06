@@ -2,8 +2,10 @@ from flask import Flask, render_template, redirect
 from flask_wtf import FlaskForm
 from wtforms import StringField, TextAreaField, EmailField, SelectField, SubmitField
 from wtforms.validators import DataRequired, Optional
+
 app = Flask(__name__)
-app.config['SECRET_KEY'] = 'SECRET_KEY' # 'x1Mm62rbKBHgV6UzUHpDh9pg91oclySRTMux7g71Uy8='
+app.config['SECRET_KEY'] = 'SECRET_KEY'
+
 
 
 class FeedbackForm(FlaskForm):
@@ -16,7 +18,7 @@ class FeedbackForm(FlaskForm):
     submit = SubmitField('Добавить')
 
 
-@app.route('/', methods=['GET', 'POST'])  # 'POST'
+@app.route('/', methods=['GET', 'POST'])
 def index():
     form = FeedbackForm()
     if form.validate_on_submit():
@@ -24,7 +26,7 @@ def index():
         text = form.text.data
         email = form.email.data
         rating = form.rating.data
-        print(name, text,rating, email)
+        print(name, text, email, rating)
         return redirect('/')
     return render_template('index.html', form=form)
 
